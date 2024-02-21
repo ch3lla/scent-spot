@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const db = () => {
   mongoose
@@ -7,10 +7,10 @@ const db = () => {
       useUnifiedTopology: true,
     })
     .then(() => {
-      console.log("Connected to MongDB");
+      console.log('Connected to MongDB');
     })
     .catch((error) => {
-      console.error("Error connection to MongoDB: ", error);
+      console.error('Error connection to MongoDB: ', error);
     });
 };
 
