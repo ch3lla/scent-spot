@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const productSchema = new Schema({
   name: {
@@ -20,16 +20,16 @@ const productSchema = new Schema({
   countInStock: {
     type: Number,
     required: true,
-  }
+  },
 });
 
-productSchema.virtual("id").get(function () {
+productSchema.virtual('id').get(function () {
   return this._id.toHexString();
 });
 
-productSchema.listenerCount("toJSON", {
+productSchema.listenerCount('toJSON', {
   virtuals: true,
 });
 
-const Product = model("Product", productSchema);
+const Product = model('Product', productSchema);
 module.exports = Product;

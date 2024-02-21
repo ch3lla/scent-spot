@@ -1,22 +1,22 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const orderSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
   },
   products: [
     {
       _id: false,
       productId: {
         type: Schema.Types.ObjectId,
-        ref: "Product",
+        ref: 'Product',
       },
       quantity: {
         type: Number,
         default: 1,
       },
-    }
+    },
   ],
   shippingAddress: {
     type: String,
@@ -28,9 +28,9 @@ const orderSchema = new Schema({
   },
   isPaid: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
-const Order = model("Order", orderSchema);
+const Order = model('Order', orderSchema);
 module.exports = Order;
