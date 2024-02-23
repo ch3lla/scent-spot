@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const productSchema = new Schema({
-  name: {
+  productName: {
     type: String,
     required: true,
   },
@@ -13,12 +13,16 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
+  badge: {
+    type: Boolean,
+    default: true,
+  },
   price: {
     type: Number,
     required: true,
   },
-  countInStock: {
-    type: Number,
+  color: {
+    type: String,
     required: true,
   },
 });
