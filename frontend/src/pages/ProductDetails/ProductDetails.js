@@ -26,7 +26,7 @@ const ProductDetails = () => {
 
 
   if (!productInfo) {
-    return <div>Loader</div>;
+    return <Loader />;
   }
 
   return (
