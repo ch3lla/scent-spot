@@ -48,7 +48,7 @@ const SignIn = () => {
 
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:4000/api/auth/login", {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
           method: 'POST',
           headers: {
             "Content-Type": "application/json",
@@ -63,8 +63,9 @@ const SignIn = () => {
             navigate("/cart");
           }, 2000);
         } else {
+          setLoading(false);
           const err = await response.json();
-          alert(err);
+          alert("Wrong credentials: ", err.message);
         }
       } catch (error){
         console.log(error);
