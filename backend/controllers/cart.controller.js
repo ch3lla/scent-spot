@@ -33,27 +33,11 @@ const getCart = async (req, res) => {
   }
 };
 
-// PAY FOR CART
-/* router.post('/cart', verifyToken, async (req, res) => {
-    try {
-        const {_id} = req.user;
-        const {shippingAddress, totalPrice} = req.body;
-
-        const order = await Order.findByIdAndUpdate(_id, {shippingAddress
-            , totalPrice}, {new: true});
-        res.status(200);
-    } catch (err) {
-        res.status(500).json(err);
-      }
-}); */
-
-// router.post('/create-checkout-session', verifyToken,
-
 const checkoutCart = async (req, res) => {
   const { _id } = req.user;
-
+  // console.log(req.body);
   try {
-    let userCart = await Cart.findOne({ userId: _id });
+    /* let userCart = await Cart.findOne({ userId: _id });
     if (userCart === null) { return; }
 
     if (userCart.orderItems && userCart.orderItems.length > 0) {
@@ -86,12 +70,45 @@ const checkoutCart = async (req, res) => {
         });
       });
     });
+    const lineItems = [];
+    lineItems.push({
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: product.productName,
+          images: [product.image],
+        },
+        unit_amount: product.price * 100,
+      },
+      quantity: req.body.products[0].quantity,
+    }); */
+    const lineItems = await Promise.all(req.body.products.map(async (productItem) => {
+      const product = await Product.findById(productItem.productId);
+      if (!product) {
+        // console.log(`Product with ID ${productItem.productId} not found`);
+        return null;
+      }
+      return {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: product.productName,
+            images: [product.image],
+          },
+          unit_amount: product.price * 100,
+        },
+        quantity: productItem.quantity,
+      };
+    }));
+    const filteredLineItems = lineItems.filter((item) => item !== null);
+    // console.log(filteredLineItems);
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: lineItems,
+      line_items: filteredLineItems,
       mode: 'payment',
-      success_url: `${process.env.BASE_URL}/checkout-sucess`,
-      cancel_url: `${process.env.BASE_URL}/cart`,
+      success_url: `${process.env.FRONTEND_URL}/cart?success=true`,
+      cancel_url: `${process.env.FRONTEND_URL}/cart?success=failed`,
     });
 
     res.json({ url: session.url });
