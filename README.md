@@ -25,7 +25,7 @@ Scent Spot provides a user-friendly interface for browsing and purchasing a wide
 
 To run the Scent Spot application locally, follow these steps:
 
-1. Clone the repository from [GitHub](https://github.com/scent-spot).
+1. Clone the repository from [GitHub](https://github.com/ch3lla/scent-spot).
 2. Install dependencies using `npm install`.
 3. Set up MongoDB and configure the database connection.
 4. Run the server using `npm start`.
