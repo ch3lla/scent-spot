@@ -31,3 +31,13 @@ To run the Scent Spot application locally, follow these steps:
 4. Run the server using `npm start`.
 5. Navigate to the client directory and start the React app using `npm start`.
 6. Access the application in your web browser at `http://localhost:3000`.
+
+## ScreenShots
+
+Here are some screenshots of our application:
+
+![Homepage](/screenshots/homepage.png)
+
+![Mobile View](/screenshots/mobile.png)
+
+![Desktop View](/screenshots/desktop.png)
