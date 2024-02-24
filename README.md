@@ -8,6 +8,7 @@ Scent Spot is a perfume ecommerce website that specializes in offering high-qual
 - **Client-Side**: React
 - **Database**: MongoDB
 - **Authentication**: JWT (JSON Web Tokens)
+- **Payment Integration**: Stripe Payment Gateway
 
 ## Overview
 
