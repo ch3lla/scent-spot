@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import Loader from '../../components/Loader';
 import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import ProductInfo from "../../components/pageProps/productDetails/ProductInfo";
 import ProductsOnSale from "../../components/pageProps/productDetails/ProductsOnSale";
@@ -26,7 +25,7 @@ const ProductDetails = () => {
 
 
   if (!productInfo) {
-    return <Loader />;
+    return <div>Loading...</div>
   }
 
   return (
