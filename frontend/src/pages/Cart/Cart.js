@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
-import { resetCart } from "../../redux/orebiSlice";
+import { resetCart } from "../../redux/cartSlice";
 import { emptyCart } from "../../assets/images/index";
 import ItemCard from "./ItemCard";
 
