@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 import { resetCart } from "../../redux/orebiSlice";
@@ -10,12 +10,11 @@ import ItemCard from "./ItemCard";
 const Cart = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.orebiReducer.products);
-  const [totalAmt, setTotalAmt] = useState("");
-  const [shippingCharge, setShippingCharge] = useState("");
+  const [totalAmt, setTotalAmt] = useState(0);
+  const [shippingCharge, setShippingCharge] = useState(0);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
-
-  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
 
   useEffect(() => {
     let price = 0;
@@ -48,6 +47,13 @@ const Cart = () => {
 
   const handlePayment = async (e) => {
     e.preventDefault();
+
+    const token = localStorage.getItem('token');
+    if (!token){
+      navigate('/signin');
+      return;
+    }
+
     const formData = {
       shippingCharge: shippingCharge,
       totalPrice: totalAmt,
@@ -142,7 +148,7 @@ const Cart = () => {
                 </p>
               </div>
               <div className="flex justify-end">
-                <button onClick={handlePayment}className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300">
+                <button onClick={handlePayment} className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300">
                   Proceed to Checkout
                 </button>
               </div>
