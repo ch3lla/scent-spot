@@ -1,0 +1,1 @@
+perfume data: id, productName, image, badge, price, color(at least 20 perfumes)

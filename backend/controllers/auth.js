@@ -45,7 +45,6 @@ const login = async (req, res) => {
       return;
     }
     const token = await user.generateAuthToken();
-    console.log(token);
     res.status(200).json({ token });
   } catch (error) {
     if (error.message === 'This email has not been registered on our system.') {

@@ -35,7 +35,6 @@ const getCart = async (req, res) => {
 
 const checkoutCart = async (req, res) => {
   const { _id } = req.user;
-  // console.log(req.body);
   try {
     /* let userCart = await Cart.findOne({ userId: _id });
     if (userCart === null) { return; }
@@ -101,7 +100,6 @@ const checkoutCart = async (req, res) => {
       };
     }));
     const filteredLineItems = lineItems.filter((item) => item !== null);
-    // console.log(filteredLineItems);
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -110,7 +108,6 @@ const checkoutCart = async (req, res) => {
       success_url: `${process.env.FRONTEND_URL}/cart?success=true`,
       cancel_url: `${process.env.FRONTEND_URL}/cart?success=failed`,
     });
-
     res.json({ url: session.url });
   } catch (Error) {
     res.status(500).json({ message: `${Error.type}: ${Error.raw.message}` });

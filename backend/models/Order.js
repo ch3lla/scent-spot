@@ -22,6 +22,10 @@ const orderSchema = new Schema({
     type: String,
     required: false,
   },
+  shippingCharge: {
+    type: Number,
+    required: false,
+  },
   totalPrice: {
     type: Number,
     required: false,

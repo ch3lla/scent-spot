@@ -20,7 +20,7 @@ router.post('/auth/register', register);
 router.post('/auth/login', login);
 
 router.get('/products', getProducts);
-router.get('/products', verifyToken, addProducts);
+router.post('/products', verifyToken, addProducts);
 
 router.put('/products/product', verifyTokenAndAdmin, updateProducts, deleteProducts);
 
