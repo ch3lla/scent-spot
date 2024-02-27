@@ -6,7 +6,7 @@ const { isMobilePhone, isEmail } = require('validator');
 const userSchema = new Schema({
   username: {
     type: String,
-    required: [true, 'Username is required and most be unique.'],
+    required: [true, 'Username is required and must be unique.'],
     unique: true,
   },
   email: {
