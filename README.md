@@ -41,3 +41,6 @@ Here are some screenshots of our application:
 ![Mobile View](/screenshots/mobile.png)
 
 ![Desktop View](/screenshots/desktop.png)
+
+## Live URL
+https://scent-spot.vercel.app/
